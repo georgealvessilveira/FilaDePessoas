@@ -32,8 +32,11 @@ public class FilaDePessoas {
                     break;
                     
                 case 2:
-                        System.out.println(filaPessoas.getPessoa().getNome() +  " removida!");
-                        filaPessoas.removerPessoa();
+                        try {
+                            filaPessoas.removerPessoa();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                     break;
                     
                 case 0:

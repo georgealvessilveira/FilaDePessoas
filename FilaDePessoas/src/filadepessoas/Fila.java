@@ -29,6 +29,10 @@ public class Fila {
     public void removerPessoa() throws Exception {
         pessoas.remove(0);
         quantidade--;
+        
+        if (pessoas.isEmpty() == true) {
+            throw new Exception("Não há pessoas para serem removidas!");
+        }
     }
     
     public Pessoa getPessoa() {
