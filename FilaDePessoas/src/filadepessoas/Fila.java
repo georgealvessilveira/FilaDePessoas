@@ -15,22 +15,23 @@ import java.util.List;
 public class Fila {
     
     private List<Pessoa> pessoas;
-    private int index;
+    public int quantidade = 0;
     
     public Fila() {
         pessoas = new ArrayList<>();
-        index = 0;
     }
     
     public void addPessoa(Pessoa pessoa) {
         pessoas.add(pessoa);
+        quantidade++;
     }
     
     public void removerPessoa() throws Exception {
-        pessoas.remove(index);
-        
-        if (pessoas.isEmpty() == true) {
-            throw new Exception("Não há mais pessoas na fila para serem removidas!");
-        }
+        pessoas.remove(0);
+        quantidade--;
+    }
+    
+    public Pessoa getPessoa() {
+        return pessoas.get(0);
     }
 }
