@@ -40,4 +40,8 @@ public class Fila {
         }
         return pessoas.get(0);
     }
+    
+    public List<Pessoa> getPessoas() {
+        return pessoas;
+    }
 }

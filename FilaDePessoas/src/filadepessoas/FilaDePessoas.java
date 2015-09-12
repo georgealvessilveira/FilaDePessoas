@@ -1,5 +1,6 @@
 package filadepessoas;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -16,9 +17,15 @@ public class FilaDePessoas {
         do {
             System.out.println("1 - Adicionar");
             System.out.println("2 - Remover");
+            System.out.println("3 - Ver todas as pessoas na fila");
             System.out.println("0 - Sair\n");
             System.out.println("Digite uma opção: ");
-            opcao = scanner.nextInt();
+            
+            try {
+                opcao = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Comando inválido, digite números ao invéz de letras ou caracteres especiais!");
+            }
             
             switch(opcao){
              
@@ -30,16 +37,25 @@ public class FilaDePessoas {
                     break;
                     
                 case 2:
-                        try {
-                            System.out.println(filaPessoas.getPessoa().getNome() +  " removida!");
-                            filaPessoas.removerPessoa();
-                        } catch (IndexOutOfBoundsException e) {
-                            System.out.println(e.getMessage());
-                        }
+                    try {
+                        System.out.println(filaPessoas.getPessoa().getNome() +  " removido(a)!");
+                        filaPessoas.removerPessoa();
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                     
                 case 0:
                     System.out.println("Fim do programa!");
+                    break;
+                    
+                case 3:
+                    System.out.println("Pessoas na fila: ");
+                    for(Pessoa pessoa : filaPessoas.getPessoas()) {
+                        System.out.println("Ninguém na fila!");
+                        System.out.println(pessoa.getNome());
+                    }
+                    System.out.println("");
                     break;
                     
                 default:
