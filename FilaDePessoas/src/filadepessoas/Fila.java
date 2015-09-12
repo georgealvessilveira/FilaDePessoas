@@ -15,7 +15,6 @@ import java.util.List;
 public class Fila {
     
     private List<Pessoa> pessoas;
-    public int quantidade = 0;
     
     public Fila() {
         pessoas = new ArrayList<>();
@@ -23,19 +22,22 @@ public class Fila {
     
     public void addPessoa(Pessoa pessoa) {
         pessoas.add(pessoa);
-        quantidade++;
     }
     
-    public void removerPessoa() throws Exception {
-        pessoas.remove(0);
-        quantidade--;
+    public void removerPessoa() throws IndexOutOfBoundsException {
         
         if (pessoas.isEmpty() == true) {
-            throw new Exception("Não há pessoas para serem removidas!");
+            throw new IndexOutOfBoundsException("Não há pessoas na fila!");
+        } else {
+            pessoas.remove(0);
         }
     }
     
-    public Pessoa getPessoa() {
+    public Pessoa getPessoa() throws IndexOutOfBoundsException {
+        
+        if (pessoas.isEmpty() == true) {
+            throw new IndexOutOfBoundsException("Não há pessoas fila!");
+        }
         return pessoas.get(0);
     }
 }

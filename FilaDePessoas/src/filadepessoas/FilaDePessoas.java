@@ -17,8 +17,6 @@ public class FilaDePessoas {
             System.out.println("1 - Adicionar");
             System.out.println("2 - Remover");
             System.out.println("0 - Sair\n");
-            
-            System.out.println("Quantidade: " + filaPessoas.quantidade);
             System.out.println("Digite uma opção: ");
             opcao = scanner.nextInt();
             
@@ -33,8 +31,9 @@ public class FilaDePessoas {
                     
                 case 2:
                         try {
+                            System.out.println(filaPessoas.getPessoa().getNome() +  " removida!");
                             filaPessoas.removerPessoa();
-                        } catch (Exception e) {
+                        } catch (IndexOutOfBoundsException e) {
                             System.out.println(e.getMessage());
                         }
                     break;
